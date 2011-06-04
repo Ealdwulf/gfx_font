@@ -1,9 +1,12 @@
 u#:=4/9pt#;
 define_pixels(u);
-width=12u;
+
+% This font defines 
 
 string i[];
-%      0   1   2   3   4   5   6   7   8   9  10  11  12  13  14  15
+% This table determines the order in which 'pixels' are set
+% metafont has no array literals, so we have to use strings
+%     0  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15
 i00="d3 d4 d5 d6 d7 d8 d9 da db dc dd de df e0 e1 e2";
 i01="d2 9c 9d 9e 9f a0 a1 a2 a3 a4 a5 a6 a7 a8 a9 e3";
 i02="d1 9b 6e 6f 70 71 72 73 74 75 76 77 78 79 aa e4";
@@ -22,13 +25,15 @@ i14="c4 c3 c2 c1 c0 bf be bd bc bb ba b9 b8 b7 b6 f0";
 i15="ff fe fd fc fb fa f9 f8 f7 f6 f5 f4 f3 f2 f1 f0";
 
 
-define_pixels(width);
+
 for c=0 step 1 until 256:
     beginchar(c,16u#,16u#,0u#);
       pickup pensquare scaled 1u;
+
+      
       for h=0 step 1 until 15:
 	for v=0 step 1 until 15:
-	  
+	  % extract threshhold for this pixel
 	  ind:=hex substring (h*3,h*3+2) of i[v];
 	  if ind<c :
 	    drawdot ((h+0.5)*u,(v+0.5)*u);
