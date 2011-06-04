@@ -1,0 +1,41 @@
+u#:=4/9pt#;
+define_pixels(u);
+width=12u;
+
+string i[];
+%      0   1   2   3   4   5   6   7   8   9  10  11  12  13  14  15
+i00="d3 d4 d5 d6 d7 d8 d9 da db dc dd de df e0 e1 e2";
+i01="d2 9c 9d 9e 9f a0 a1 a2 a3 a4 a5 a6 a7 a8 a9 e3";
+i02="d1 9b 6e 6f 70 71 72 73 74 75 76 77 78 79 aa e4";
+i03="d0 9a 6d 48 49 4a 4b 4c 4d 4e 4f 50 51 7a ab e5";
+i04="cf 99 6c 47 2a 2b 2c 2d 2e 2f 30 31 52 7b ac e6";
+i05="ce 98 6b 46 29 14 15 16 17 18 19 32 53 7c ad e7";
+i06="cd 97 6a 45 28 13 06 07 08 09 1a 33 54 7d ae e8";
+i07="cc 96 69 44 27 12 05 00 01 0a 1b 34 55 7e af e9";
+i08="cb 95 68 43 26 11 04 03 02 0b 1c 35 56 7f b0 ea";
+i09="ca 94 67 42 25 10 0f 0e 0d 0c 1d 36 57 80 b1 eb";
+i10="c9 93 66 41 24 23 22 21 20 1f 1e 37 58 81 b2 ec";
+i11="c7 92 65 40 3f 3e 3d 3c 3b 3a 39 38 59 82 b3 ed";
+i12="c6 91 64 63 62 61 60 5f 5e 5d 5c 5b 5a 83 b4 ee";
+i13="c5 90 8f 8e 8d 8c 8b 8a 89 88 87 86 85 84 b5 ef";
+i14="c4 c3 c2 c1 c0 bf be bd bc bb ba b9 b8 b7 b6 f0";
+i15="ff fe fd fc fb fa f9 f8 f7 f6 f5 f4 f3 f2 f1 f0";
+
+
+define_pixels(width);
+for c=0 step 1 until 256:
+    beginchar(c,16u#,16u#,0u#);
+      pickup pensquare scaled 1u;
+      for h=0 step 1 until 15:
+	for v=0 step 1 until 15:
+	  
+	  ind:=hex substring (h*3,h*3+2) of i[v];
+	  if ind<c :
+	    drawdot ((h+0.5)*u,(v+0.5)*u);
+	  fi;
+	endfor;
+      endfor;
+    endchar;
+endfor
+end
+ 
