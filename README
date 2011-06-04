@@ -1,2 +1,4 @@
 This project builds a 'font' in which all characters are dots,
 with size determined by ascii value.
+
+Prerequisites: metafont, mftrace.
